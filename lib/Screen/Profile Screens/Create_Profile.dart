@@ -344,46 +344,29 @@ class _CProfileScreenState extends State<CProfileScreen> {
                               "Warning", "Fill the Profile Data!!!");
                           return null;
                         }
-                        // EasyLoading.show();
+                        EasyLoading.show();
                         String imageUrl =
                             await uploadImageToFirebaseStorage(profileImage!);
 
-                        FirebaseFirestore.instance
-                            .collection("users")
-                            .doc(currentUserData)
-                            .update({
-                          "userFName": firstNameController.text.trim(),
-                          "userLName": lastNameController.text.trim(),
-                          "userPNumber": mobileNumberController.text.trim(),
-                          "userDOB": dob.text.trim(),
-                          "gender": selectedRadio == 0 ? "Male" : "Female",
-                          "userPicture": imageUrl
-                        }).then((value) {
-                          CustomizedSnackBar("Profile", "Data has been saved");
-                        }).catchError((e) {
+                        try {
+                          firestore_update(
+                              "users",
+                              currentUserData,
+                              ({
+                                "userFName": firstNameController.text.trim(),
+                                "userLName": lastNameController.text.trim(),
+                                "userPNumber":
+                                    mobileNumberController.text.trim(),
+                                "userDOB": dob.text.trim(),
+                                "gender":
+                                    selectedRadio == 0 ? "Male" : "Female",
+                                "userPicture": imageUrl
+                              }));
+                          EasyLoading.dismiss();
+                          Get.offAll(() => HomeBottomMenuBar());
+                        } catch (e) {
                           CustomizedSnackBar("Warning", e);
-                          print(e);
-                        });
-
-                        // try {
-                        //   firestore_update(
-                        //       "users",
-                        //       currentUserData,
-                        //       ({
-                        //         "userFName": firstNameController.text.trim(),
-                        //         "userLName": lastNameController.text.trim(),
-                        //         "userPNumber":
-                        //             mobileNumberController.text.trim(),
-                        //         "userDOB": dob.text.trim(),
-                        //         "gender":
-                        //             selectedRadio == 0 ? "Male" : "Female",
-                        //         "userPicture": imageUrl
-                        //       }));
-                        //   EasyLoading.dismiss();
-                        //   Get.offAll(() => HomeBottomMenuBar());
-                        // } catch (e) {
-                        //   CustomizedSnackBar("Warning", e);
-                        // }
+                        }
                       },
                       text: "Save"),
                   40.h.heightBox,

@@ -55,7 +55,7 @@ class DataController extends GetxController {
 
 ////////////// get profile Data  //////////////////
   getMyDocument() {
-    FirebaseFirestore.instance
+    firestore
         .collection('users')
         .doc(currentUserData)
         .snapshots()
@@ -108,7 +108,7 @@ class DataController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    // getMyDocument();
+    getMyDocument();
     // getUsers();
     // getEvents();
   }

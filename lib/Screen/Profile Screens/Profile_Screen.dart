@@ -3,6 +3,7 @@ import 'package:event_management/Constants/ColorConstants.dart';
 import 'package:event_management/Constants/utils.dart';
 import 'package:event_management/Controller/data_controller.dart';
 import 'package:event_management/Models/Service.dart';
+import 'package:event_management/Models/UserModels.dart';
 import 'package:event_management/Models/ticket_model.dart';
 import 'package:event_management/Screen/Profile%20Screens/Edit_Profile.dart';
 import 'package:event_management/Widgets/customizted_btn.dart';
@@ -74,25 +75,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
   String? location;
   String? desc;
 
-  // @override
-  // initState() {
-  //   super.initState();
-
-  // dataController = Get.find<DataController>();
-
-  // fName = dataController?.myDocument!.get('first');
-  // lName = dataController?.myDocument!.get('last');
-  // desc = dataController?.myDocument!.get('desc');
-  // location = dataController?.myDocument!.get('location');
-  // try {
-  //   image = dataController?.myDocument!.get('userPicture');
-  // } catch (e) {
-  //   image = '';
+  // getuserdata() async {
+  //   var documentSnapshot = await firestore_get("users", currentUserData);
+  //   UserModelData = UserModel.fromMap(documentSnapshot);
   // }
 
-  // followers = dataController?.myDocument!.get('followers').length;
-  // following = dataController?.myDocument!.get('following').length;
-  // }
+  @override
+  initState() {
+    super.initState();
+    dataController = Get.find<DataController>();
+    fName = dataController?.myDocument!.get('userFName');
+    lName = dataController?.myDocument!.get('userLName');
+    desc = dataController?.myDocument!.get('desc');
+    location = dataController?.myDocument!.get('location');
+    try {
+      image = dataController?.myDocument!.get('userPicture');
+    } catch (e) {
+      image = '';
+    }
+    try {
+      followers = dataController!.myDocument!.get('followers').length;
+    } catch (e) {
+      followers = 0;
+    }
+
+    try {
+      following = dataController!.myDocument!.get('following').length;
+    } catch (e) {
+      following = 0;
+    }
+
+    // followers = dataController?.myDocument!.get('followers');
+    // following = dataController?.myDocument!.get('following');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -190,124 +205,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       radius: 55.r,
                                       backgroundColor: Colors.white,
                                       backgroundImage: NetworkImage(
-                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPyGNr2qL63Sfugk2Z1-KBEwMGOfycBribew&usqp=CAU")
-                                      // child: ClipOval(
-                                      //   child: Image.network(
-                                      //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPyGNr2qL63Sfugk2Z1-KBEwMGOfycBribew&usqp=CAU",
-                                      //     fit: BoxFit.cover,
-                                      //     height: 80.h,
-                                      //   ),
-                                      // ),
-                                      )
-                                  // backgroundImage: AssetImage(
-                                  //   'assets/images/profile.png',
-                                  // ))
+                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPyGNr2qL63Sfugk2Z1-KBEwMGOfycBribew&usqp=CAU"))
                                   : CircleAvatar(
                                       radius: 55.r,
                                       backgroundColor: Colors.white,
                                       backgroundImage: NetworkImage(
                                         image,
                                       )),
-                              // child: Image.asset(
-                              //   'assets/profilepic.png',
-                              //   fit: BoxFit.contain,
-                              // ),
                             ),
                           ],
                         ),
                       ),
                     ),
                     15.h.heightBox,
-                    isNotEditable
-                        ? TextStyled(
-                            text: "User Name",
-                            size: 17.sp,
-                            FontWeight: FontWeight.w700)
-                        // Text(
-                        //     "${firstNameController.text} ${lastNameController.text}",
-                        //     style: TextStyle(
-                        //       fontSize: 18,
-                        //       color: MColor,
-                        //       fontWeight: FontWeight.w700,
-                        //     ),
-                        //   )
+                    TextStyled(
+                        text: fName == null ? "User Name" : "${fName} ${lName}",
+                        size: 17.sp,
+                        FontWeight: FontWeight.w700),
 
-                        : Container(
-                            width: Get.width * 0.6,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: TextField(
-                                    controller: firstNameController,
-                                    textAlign: TextAlign.center,
-                                    decoration: InputDecoration(
-                                      isDense: true,
-                                      hintText: 'First Name',
-                                    ),
-                                  ),
-                                ),
-                                10.w.widthBox,
-                                Expanded(
-                                  child: TextField(
-                                    controller: lastNameController,
-                                    textAlign: TextAlign.center,
-                                    decoration: InputDecoration(
-                                      isDense: true,
-                                      hintText: 'Last Name',
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                    3.h.heightBox,
-                    isNotEditable
-                        ? TextStyled(
-                            text: "Location",
-                            size: 17.sp,
-                            FontWeight: FontWeight.w700)
-                        : Container(
-                            width: Get.width * 0.6,
-                            child: TextField(
-                              controller: locationController,
-                              textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                hintText: 'Location',
-                              ),
-                            ),
-                          ),
+                    5.h.heightBox,
+
+                    TextStyled(
+                        text: location == null ? "location" : location,
+                        size: 17.sp,
+                        FontWeight: FontWeight.w700),
+
                     15.h.heightBox,
-                    isNotEditable
-                        ? Container(
-                            height: 50.h,
-                            width: 270.w,
-                            child: TextStyled(
-                                text:
-                                    "The key to your success on Fiverr is the brand you build for yourself through your Fiverr reputation",
-                                size: 15.sp,
-                                FontWeight: FontWeight.w700)
-                            // Text(
-                            //   '${descriptionController.text}',
-                            //   textAlign: TextAlign.center,
-                            //   style: TextStyle(
-                            //     letterSpacing: -0.3,
-                            //     fontSize: 12,
-                            //     fontWeight: FontWeight.w300,
-                            //   ),
-                            // ),
-                            )
-                        : Container(
-                            width: Get.width * 0.6,
-                            child: TextField(
-                              controller: descriptionController,
-                              textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                hintText: 'Description',
-                              ),
-                            ),
-                          ),
+                    Container(
+                        height: 50.h,
+                        width: 270.w,
+                        child: TextStyled(
+                            text: desc == null ? "Description" : "$desc",
+                            size: 15.sp,
+                            FontWeight: FontWeight.w700)),
                     15.h.heightBox,
                     /////////////////////////////////
                     Container(
@@ -754,7 +684,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   margin: EdgeInsets.only(top: 105.w, right: 35.h),
                   child: GestureDetector(
                     onTap: () {
-                      // Get.to(() => EditProfile());
+                      Get.to(() => EditProfile());
 
                       // if (isNotEditable == false) {
                       //   FirebaseFirestore.instance

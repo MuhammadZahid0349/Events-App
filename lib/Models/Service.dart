@@ -18,6 +18,7 @@ var auth = FirebaseAuth.instance;
 var firestore = FirebaseFirestore.instance;
 var fbStorage = FirebaseStorage.instance;
 var currentUserData = auth.currentUser?.uid;
+var UserModelData = UserModel();
 
 signUp(String email, String password) async {
   try {
@@ -66,11 +67,23 @@ firestore_update(collection, doc, data) async {
   return dat;
 }
 
-firestore_get(collection, doc) async {
-  DocumentSnapshot userData =
-      await firestore.collection(collection).doc(doc).get();
-  return userData;
-}
+// firestore_get(collection, doc) async {
+//   try {
+//     EasyLoading.show();
+//     DocumentSnapshot userData =
+//         await firestore.collection(collection).doc(doc).get();
+//     EasyLoading.dismiss();
+//     return userData;
+//   } on FirebaseException catch (e) {
+//     EasyLoading.dismiss();
+//     CustomizedSnackBar("From Database", e.message);
+//     print(e);
+//   } catch (e) {
+//     EasyLoading.dismiss();
+//     print(e);
+//     CustomizedSnackBar("From Database", e);
+//   }
+// }
 
 void login(String? email, String? password) {
   EasyLoading.show();
