@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:event_management/Constants/ColorConstants.dart';
 import 'package:event_management/Constants/utils.dart';
 import 'package:event_management/Models/Service.dart';

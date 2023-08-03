@@ -44,40 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDwdPkw3P5qLezfwMhWOKh10C27INj7xvM',
-    appId: '1:490671147785:web:42315c13fc1f8ad51de1d8',
-    messagingSenderId: '490671147785',
-    projectId: 'event-management-f70a2',
-    authDomain: 'event-management-f70a2.firebaseapp.com',
-    storageBucket: 'event-management-f70a2.appspot.com',
-    measurementId: 'G-Y3J1CW74CB',
+    apiKey: 'AIzaSyDAzAPve2rOsK32k5rJpI4bJt8iCYpiA6A',
+    appId: '1:280923563161:web:a596226a8e6dafd4acc408',
+    messagingSenderId: '280923563161',
+    projectId: 'event-management-a5470',
+    authDomain: 'event-management-a5470.firebaseapp.com',
+    storageBucket: 'event-management-a5470.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCmxP4XgmeY-nq0wEKqHUtsQeCuT8lT8Z0',
-    appId: '1:490671147785:android:42ff264614bd55281de1d8',
-    messagingSenderId: '490671147785',
-    projectId: 'event-management-f70a2',
-    storageBucket: 'event-management-f70a2.appspot.com',
+    apiKey: 'AIzaSyD4WYpDcmXti8U7dVjSCSQlliHEKaSouJw',
+    appId: '1:280923563161:android:10629f02cf6204dfacc408',
+    messagingSenderId: '280923563161',
+    projectId: 'event-management-a5470',
+    storageBucket: 'event-management-a5470.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBYDJoUMzf7-imIXPtthn9xx1B7Wvmzee8',
-    appId: '1:490671147785:ios:e8ee6860f1fa87611de1d8',
-    messagingSenderId: '490671147785',
-    projectId: 'event-management-f70a2',
-    storageBucket: 'event-management-f70a2.appspot.com',
-    iosClientId: '490671147785-bc3b5f97nqsd1i9fj1rjq4emfino1era.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBeFjLIMcYx7iX8S1coH3fARJDv9IM81xw',
+    appId: '1:280923563161:ios:f5b494a8afa006ffacc408',
+    messagingSenderId: '280923563161',
+    projectId: 'event-management-a5470',
+    storageBucket: 'event-management-a5470.appspot.com',
+    iosClientId: '280923563161-h8rev07lbsu83f1fhlhve0722trhlou0.apps.googleusercontent.com',
     iosBundleId: 'com.example.eventManagement',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBYDJoUMzf7-imIXPtthn9xx1B7Wvmzee8',
-    appId: '1:490671147785:ios:e8ee6860f1fa87611de1d8',
-    messagingSenderId: '490671147785',
-    projectId: 'event-management-f70a2',
-    storageBucket: 'event-management-f70a2.appspot.com',
-    iosClientId: '490671147785-bc3b5f97nqsd1i9fj1rjq4emfino1era.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBeFjLIMcYx7iX8S1coH3fARJDv9IM81xw',
+    appId: '1:280923563161:ios:f5b494a8afa006ffacc408',
+    messagingSenderId: '280923563161',
+    projectId: 'event-management-a5470',
+    storageBucket: 'event-management-a5470.appspot.com',
+    iosClientId: '280923563161-h8rev07lbsu83f1fhlhve0722trhlou0.apps.googleusercontent.com',
     iosBundleId: 'com.example.eventManagement',
   );
 }
